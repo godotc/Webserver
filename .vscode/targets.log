@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Jun 16 20:50:37 2022
+# Make data base, printed on Thu Jun 16 21:03:08 2022
 
 # Variables
 
@@ -153,7 +153,7 @@ LC_PAPER = zh_CN.UTF-8
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-d748ca78-c565-4ad9-a97b-d81c430c7740.sock
+VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-5a0614b4-30cd-49e5-9892-fc2ca49bfb79.sock
 # environment
 XDG_SESSION_CLASS = user
 # environment
@@ -191,9 +191,9 @@ SSH_CONNECTION = 192.168.18.1 62513 192.168.18.132 22
 
 # Directories
 
-# . (device 2051, inode 5636098): 12 files, no impossibilities.
+# . (device 2051, inode 5636098): 13 files, no impossibilities.
 
-# 12 files, no impossibilities in 1 directories.
+# 13 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -255,12 +255,12 @@ makefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 18 / storage = 152 B / avg = 8 B
-# current buf: size = 8162 B / used = 152 B / count = 18 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 19 / storage = 157 B / avg = 8 B
+# current buf: size = 8162 B / used = 157 B / count = 19 / avg = 8 B
 
-# strcache performance: lookups = 27 / hit rate = 33%
+# strcache performance: lookups = 28 / hit rate = 32%
 # hash-table stats:
-# Load=18/8192=0%, Rehash=0, Collisions=0/27=0%
-# Finished Make data base on Thu Jun 16 20:50:37 2022
+# Load=19/8192=0%, Rehash=0, Collisions=0/28=0%
+# Finished Make data base on Thu Jun 16 21:03:08 2022
 
  

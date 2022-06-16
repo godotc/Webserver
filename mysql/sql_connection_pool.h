@@ -28,9 +28,15 @@ public:
     int m_close_log;    // switch of log
 
 public:
+    void init (std::string url, std::string User, std::string Passwd, std::string DatabaseName, int Port, int maxConn, int close_log);
+    
+    // the Singleton Pattern(单例模式)
+    static sql_conn_pool* GetSingleton ();
+    
     MYSQL* GetConnection ();    // get the conn of db
     bool ReleaseConnection (MYSQL* conn);
-    int GetFreeConn ();     //
+    int GetFreeConn ();     // get the number of free conn
+    void DestoryPool ();     // destory all conn
 };
 
 
