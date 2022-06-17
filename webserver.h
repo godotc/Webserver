@@ -12,11 +12,10 @@ private:
 
     int m_pipefd[2];
     int m_epollfd;
-    
 
 public:
-    Webserver ();
-    ~Webserver ();
+    Webserver();
+    ~Webserver();
 };
 
 #endif

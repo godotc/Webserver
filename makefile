@@ -8,7 +8,7 @@ else
 	CXXFLAGS += -O2
 endif
 
-server: main.cpp  config.cpp
+server: main.cpp  config.cpp log/log.cpp  mysql/sql_connection_pool.cpp
 	$(CXX) -o server $^ $(CXXFLAGS)
 
 clean:
