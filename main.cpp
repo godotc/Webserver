@@ -1,7 +1,7 @@
 #include<string>
 #include"config.h"
 
-int main (int argc, char** argv)
+int main(int argc , char** argv)
 {
 
     // The info need to be modified: mysql account,passwd,databasename 
@@ -11,7 +11,7 @@ int main (int argc, char** argv)
 
     // parse command line args
     Config config;
-    config.parse_arg (argc, argv);
+    config.parse_arg(argc , argv);
 
 
 

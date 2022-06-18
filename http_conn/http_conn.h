@@ -1,7 +1,7 @@
 #ifndef HTTP_CONN_H
 #define HTTP_CONN_H
 
-#include "../mysql/sql_connection_pool.h"
+#include "../mysql_conn/sql_connection_pool.h"
 #include "encapsulated_epoll.h"
 #include <arpa/inet.h>
 #include <map>
@@ -115,6 +115,8 @@ public:
     {
         return &m_address;
     }
+    void initmysql_result(sql_conn_pool* sql_conn_pool);
+
 
 private:
     void init();

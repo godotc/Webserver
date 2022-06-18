@@ -2,6 +2,10 @@
 
 #include <cstring>
 
+// preinit static varable
+int http_conn::m_user_count = 0;
+int http_conn::m_epollfd = -1;
+
 // some response info
 const char* ok_200_title = "OK";
 const char* error_400_title = "Bad Request";
@@ -16,6 +20,7 @@ const char* error_500_form = "There was an unusual problem servingthe request fi
 // local lock & local memory for users' info
 locker m_lock;
 std::map<std::string , std::string>users;
+
 
 void http_conn::initmysql_result(sql_conn_pool* connPool)
 {
