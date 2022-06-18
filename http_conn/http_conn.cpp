@@ -17,6 +17,36 @@ const char* error_500_form = "There was an unusual problem servingthe request fi
 locker m_lock;
 std::map<std::string , std::string>users;
 
+void http_conn::initmysql_result(sql_conn_pool* connPool)
+{
+    // get a conn from pool
+    MYSQL* mysql = nullptr;
+    sql_conn_RAII mysqlconn(&mysql , connPool);
+
+    // check info from User table that brower input
+    if (mysql_query(mysql , "SELECT username,passwd FROM user"))
+    {
+        LOG_ERROR("SELECT error:%s\n" , mysql_error(mysql));
+    }
+
+    // check full result from table
+    MYSQL_RES* result = mysql_store_result(mysql);
+
+    // return number of cols from result
+    int num_files = mysql_num_fields(result);
+
+    // loop get next row, store user&passwd to map
+    while (MYSQL_ROW row = mysql_fetch_row(result))
+    {
+        std::string user(row[0]);
+        std::string passwd(row[1]);
+        users[user] = passwd;
+    }
+}
+
+
+
+
 
 // init new conn's varable that accept
 // check_state set as default: CHECK_STATE_REQUESTLINE
@@ -105,7 +135,37 @@ bool http_conn::read_once()
         return false;
     int bytes_read = 0;
 
+    // read in Level Triggle
+    if (0 == m_TRIGMode)
+    {
+        bytes_read = recv(m_sockfd , m_read_buf + m_read_idx , READ_BUFFER_SIZE - m_read_idx , 0);
+        m_read_idx += bytes_read;
 
+        if (bytes_read <= 0)
+        {
+            return false;
+        }
+        return true;
+    }
+    // read in Edge Triggle
+    else {
+        while (true)
+        {
+            bytes_read = recv(m_sockfd , m_read_buf + m_read_idx , READ_BUFFER_SIZE + m_read_idx , 0);
+            if (-1 == bytes_read)
+            {
+                if (errno == EAGAIN || errno == EWOULDBLOCK)
+                    break;
+                return false;
+            }
+            else if (0 == bytes_read)
+            {
+                return false;
+            }
+            m_read_idx += bytes_read;
+        }
+        return true;
+    }
 }
 
 
@@ -514,4 +574,69 @@ bool http_conn::add_content(const char* content)
     return add_response("%s" , content);
 }
 
+bool http_conn::unmap()
+{
+    if (m_file_address)
+    {
+        munmap(m_file_address , m_file_stat.st_size);
+        m_file_address = nullptr;
+    }
+}
 
+bool http_conn::write()
+{
+    int temp = 0;
+
+    if (bytes_to_send == 0)
+    {
+        modfd(m_epollfd , m_sockfd , EPOLLIN , m_TRIGMode);
+        init();
+        return true;
+    }
+
+    while (1)
+    {
+        temp = writev(m_sockfd , m_iv , m_iv_count);
+
+        if (temp < 0)
+        {
+            if (errno == EAGAIN)
+            {
+                modfd(m_epollfd , m_sockfd , EPOLLOUT , m_TRIGMode);
+                return true;
+            }
+            unmap();
+            return false;
+        }
+
+        bytes_have_send += temp;
+        bytes_to_send -= temp;
+        if (bytes_have_send >= m_iv[0].iov_len)
+        {
+            m_iv[0].iov_len = 0;
+            m_iv[1].iov_base = m_file_address + (bytes_to_send - m_write_idx);
+            m_iv[1].iov_len = bytes_to_send;
+        }
+        else {
+            m_iv[0].iov_base = m_write_buf + bytes_have_send;
+            m_iv[0].iov_len = m_iv[0].iov_len - bytes_have_send;
+        }
+
+        if (bytes_have_send <= 0)
+        {
+            unmap();
+            modfd(m_epollfd , m_sockfd , EPOLLIN , m_TRIGMode);
+
+            if (m_linger)
+            {
+                init();
+                return true;
+            }
+            else {
+
+                return false;
+
+            }
+        }
+    }
+}

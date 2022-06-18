@@ -8,7 +8,7 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <sys/mman.h>
-
+#include<sys/uio.h>
 
 class http_conn
 {
@@ -109,6 +109,12 @@ public:
     void init(int sockfd , const sockaddr_in& addr , char* , int , int , std::string user , std::string passwd , std::string sqlname);
     void close_conn(bool real_close = true);
     void process();
+    bool read_once();
+    bool write();
+    sockaddr_in* get_address()
+    {
+        return &m_address;
+    }
 
 private:
     void init();
@@ -128,5 +134,7 @@ private:
     bool add_linger();
     bool add_blank_line();
     bool add_content(const char* content);
+
+    bool unmap();
 };
 #endif

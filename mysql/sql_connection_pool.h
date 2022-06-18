@@ -17,8 +17,8 @@ private:
     semaphore reserve;
     std::list<MYSQL*>connList;   // pool of conn
 
-    sql_conn_pool ();
-    ~sql_conn_pool ();
+    sql_conn_pool();
+    ~sql_conn_pool();
 
 public:
     std::string m_url;      // the addr of host;
@@ -29,15 +29,15 @@ public:
     int m_close_log;    // switch of log
 
 public:
-    void init (std::string url, std::string User, std::string Passwd, std::string DatabaseName, int Port, int maxConn, int close_log);
+    void init(std::string url , std::string User , std::string Passwd , std::string DatabaseName , int Port , int maxConn , int close_log);
 
     // the Singleton Pattern(单例模式)
-    static sql_conn_pool* GetSingleton ();
+    static sql_conn_pool* GetSingleton();
 
-    MYSQL* GetConnection ();    // get the conn of db
-    bool ReleaseConnection (MYSQL* conn);
-    int GetFreeConn ();     // get the number of free conn
-    void DestoryPool ();     // destory all conn
+    MYSQL* GetConnection();    // get the conn of db
+    bool ReleaseConnection(MYSQL* conn);
+    int GetFreeConn();     // get the number of free conn
+    void DestoryPool();     // destory all conn
 };
 
 
@@ -48,8 +48,8 @@ private:
     sql_conn_pool* poolRAII;
 
 public:
-    sql_conn_RAII (MYSQL** conn, sql_conn_pool* connPoll);
-    ~sql_conn_RAII ();
+    sql_conn_RAII(MYSQL** conn , sql_conn_pool* connPoll);
+    ~sql_conn_RAII();
 };
 
 #endif
