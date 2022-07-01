@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Jun 17 20:13:50 2022
+# Make data base, printed on Sat Jun 18 23:58:29 2022
 
 # Variables
 
@@ -38,6 +38,8 @@ PWD = /home/godot/Code/Webserver_on_Linux
 %D = $(patsubst %/,%,$(dir $%))
 # environment
 XDG_DATA_DIRS = /usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop
+# environment
+OLDPWD = /home/godot/.vscode-server-insiders/bin/fbf1cf3832d43088e27837dbb68d24ab65a098c1
 # automatic
 ^D = $(patsubst %/,%,$(dir $^))
 # environment
@@ -85,7 +87,7 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # environment
-VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{}}
+VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # makefile
@@ -99,7 +101,7 @@ MAKELEVEL := 0
 # default
 MAKE = $(MAKE_COMMAND)
 # environment
-PATH = /home/godot/.vscode-server/bin/30d9c6cd9483b2cc586687151bcbcd635f373630/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+PATH = /home/godot/.vscode-server-insiders/bin/fbf1cf3832d43088e27837dbb68d24ab65a098c1/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 # default
 MAKEFILES := 
 # environment
@@ -113,7 +115,7 @@ LC_MONETARY = zh_CN.UTF-8
 # environment
 LC_TIME = zh_CN.UTF-8
 # environment
-SSH_CLIENT = 192.168.18.1 54323 22
+SSH_CLIENT = 192.168.18.1 58386 22
 # environment
 VSCODE_LOG_NATIVE = false
 # environment
@@ -129,7 +131,7 @@ LS_COLORS =
 # 'override' directive
 GNUMAKEFLAGS := 
 # environment
-BROWSER = /home/godot/.vscode-server/bin/30d9c6cd9483b2cc586687151bcbcd635f373630/bin/helpers/browser.sh
+BROWSER = /home/godot/.vscode-server-insiders/bin/fbf1cf3832d43088e27837dbb68d24ab65a098c1/bin/helpers/browser.sh
 # environment
 LOGNAME = godot
 # makefile
@@ -143,15 +145,17 @@ VSCODE_EXTHOST_WILL_SEND_SOCKET = true
 # environment
 LC_MEASUREMENT = zh_CN.UTF-8
 # environment
-VSCODE_AGENT_FOLDER = /home/godot/.vscode-server
+NODE_TLS_REJECT_UNAUTHORIZED = 0
 # environment
-_ = /home/godot/.vscode-server/bin/30d9c6cd9483b2cc586687151bcbcd635f373630/node
+VSCODE_AGENT_FOLDER = /home/godot/.vscode-server-insiders
+# environment
+_ = /home/godot/.vscode-server-insiders/bin/fbf1cf3832d43088e27837dbb68d24ab65a098c1/node
 # environment
 LC_PAPER = zh_CN.UTF-8
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-9d514375-5875-47e6-9792-6c98c0287903.sock
+VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-e8c338ae-f9e2-48a5-aaeb-6b03f7d444a6.sock
 # environment
 XDG_SESSION_CLASS = user
 # environment
@@ -159,7 +163,9 @@ VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
 HOME = /home/godot
 # environment
-XDG_SESSION_ID = 2
+ELECTRON_RUN_AS_NODE = 1
+# environment
+XDG_SESSION_ID = 11
 # environment
 PAPERSIZE = a4
 # default
@@ -179,9 +185,9 @@ CXX = g++
 # environment
 LC_IDENTIFICATION = zh_CN.UTF-8
 # environment
-SSH_CONNECTION = 192.168.18.1 54323 192.168.18.132 22
+SSH_CONNECTION = 192.168.18.1 58386 192.168.18.132 22
 # variable set hash-table stats:
-# Load=84/1024=8%, Rehash=0, Collisions=5/117=4%
+# Load=87/1024=8%, Rehash=0, Collisions=5/119=4%
 
 # Pattern-specific Variable Values
 
@@ -189,9 +195,9 @@ SSH_CONNECTION = 192.168.18.1 54323 192.168.18.132 22
 
 # Directories
 
-# . (device 2051, inode 5636098): 15 files, no impossibilities.
+# . (device 2051, inode 5636098): 19 files, no impossibilities.
 
-# 15 files, no impossibilities in 1 directories.
+# 19 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -209,21 +215,27 @@ clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 15):
+#  recipe to execute (from 'makefile', line 17):
 	rm -r server 
 
-server: main.cpp config.cpp log/log.cpp mysql/sql_connection_pool.cpp
+# Not a target:
+timer/list_timer.cpp:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 12):
-	$(CXX) -o server $^ $(CXXFLAGS)
 
 # Not a target:
-mysql/sql_connection_pool.cpp:
+webserver.cpp:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+
+server: main.cpp config.cpp webserver.cpp log/log.cpp mysql_conn/sql_connection_pool.cpp http_conn/http_conn.cpp timer/list_timer.cpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 15):
+	$(CXX)   $^ $(CXXFLAGS) -lpthread -lmysqlclient -Ihttp_conn -o server 
 
 # Not a target:
 log/log.cpp:
@@ -232,7 +244,19 @@ log/log.cpp:
 #  File has not been updated.
 
 # Not a target:
+http_conn/http_conn.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 .DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+mysql_conn/sql_connection_pool.cpp:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -253,24 +277,25 @@ main.cpp:
 # Not a target:
 makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-17 15:37:06.313223681
+#  Last modified 2022-06-18 23:51:17.983543392
 #  File has been updated.
 #  Successfully updated.
 
 # files hash-table stats:
-# Load=10/1024=1%, Rehash=0, Collisions=0/24=0%
+ 
+# Load=13/1024=1%, Rehash=0, Collisions=0/30=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 23 / storage = 205 B / avg = 8 B
-# current buf: size = 8162 B / used = 205 B / count = 23 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 30 / storage = 309 B / avg = 10 B
+# current buf: size = 8162 B / used = 309 B / count = 30 / avg = 10 B
 
-# strcache performance: lookups = 32 / hit rate = 28%
+# strcache performance: lookups = 39 / hit rate = 23%
 # hash-table stats:
-# Load=23/8192=0%, Rehash=0, Collisions=0/32=0%
-# Finished Make data base on Fri Jun 17 20:13:50 2022
+# Load=30/8192=0%, Rehash=0, Collisions=0/39=0%
+# Finished Make data base on Sat Jun 18 23:58:29 2022
 
  

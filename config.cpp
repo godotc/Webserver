@@ -1,6 +1,6 @@
-#include"config.h"
-#include"unistd.h"
-#include"stdlib.h"
+#include "config.h"
+#include "stdlib.h"
+#include "unistd.h"
 
 Config::Config ()
 {
@@ -19,8 +19,7 @@ Config::Config ()
     // 优雅关闭链接，默认不适用 0
     OPT_LINGER = 0;
 
-
-    // number of sql connection poll   
+    // number of sql connection poll
     sql_num = 8;
 
     // number of thread in pool
@@ -33,55 +32,56 @@ Config::Config ()
     actor_model = 0;
 }
 
-void Config::parse_arg (int argc, char** argv)
+void
+Config::parse_arg (int argc, char **argv)
 {
     int opt;
-    const char* str = "p:l:m:o:s:t:c:a:";
+    const char *str = "p:l:m:o:s:t:c:a:";
 
-    while (( opt = getopt (argc, argv, str) ) != -1)
-    {
-        switch (opt)
+    while ((opt = getopt (argc, argv, str)) != -1)
         {
-        case 'p':
-            {
-                PORT = atoi (optarg);
-                break;
-            }
-        case 'l':
-            {
-                LOGWrite = atoi (optarg);
-                break;
-            }
-        case 'm':
-            {
-                TRIGMode = atoi (optarg);
-            }
-        case 'o':
-            {
-                OPT_LINGER = atoi (optarg);
-            }
-        case 's':
-            {
-                sql_num = atoi (optarg);
-                break;
-            }
-        case 't':
-            {
-                thread_num = atoi (optarg);
-                break;
-            }
-        case 'c':
-            {
-                close_log = atoi (optarg);
-                break;
-            }
-        case 'a':
-            {
-                actor_model = atoi (optarg);
-                break;
-            }
-        default:
-            break;
+            switch (opt)
+                {
+                case 'p':
+                    {
+                        PORT = atoi (optarg);
+                        break;
+                    }
+                case 'l':
+                    {
+                        LOGWrite = atoi (optarg);
+                        break;
+                    }
+                case 'm':
+                    {
+                        TRIGMode = atoi (optarg);
+                    }
+                case 'o':
+                    {
+                        OPT_LINGER = atoi (optarg);
+                    }
+                case 's':
+                    {
+                        sql_num = atoi (optarg);
+                        break;
+                    }
+                case 't':
+                    {
+                        thread_num = atoi (optarg);
+                        break;
+                    }
+                case 'c':
+                    {
+                        close_log = atoi (optarg);
+                        break;
+                    }
+                case 'a':
+                    {
+                        actor_model = atoi (optarg);
+                        break;
+                    }
+                default:
+                    break;
+                }
         }
-    }
 }

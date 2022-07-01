@@ -5,12 +5,10 @@
 class Config
 {
 public:
-    Config ();
-    ~Config (){};
+    Config();
+    ~Config() {};
 
-    void parse_arg (int argc, char** argv);
-
-private:
+    void parse_arg(int argc , char** argv);
 
     int PORT;
 
