@@ -1,15 +1,13 @@
 #ifndef LOG_H
 #define LOG_H
 
-#include <bits/types/FILE.h>
-#include <stdarg.h>
-
-#include <memory>
-#include <mutex>
-#include <thread>
-
 #include "../buffer/buffer.h"
 #include "blockqueue.h"
+#include <bits/types/FILE.h>
+#include <memory>
+#include <mutex>
+#include <stdarg.h>
+#include <thread>
 
 class Log
 {

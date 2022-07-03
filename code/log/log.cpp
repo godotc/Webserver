@@ -87,7 +87,7 @@ Log::write (int level, const char *format, ...)
 
     // Write
     {
-        // Date + Warn Level + Log(format)
+        // Date
         std::unique_lock<std::mutex> locker (mtx_);
         lineCount_++;
         int n = snprintf (buff_.BeginWrite (), 128, "%d-%02d-%02d %02d:%02d:%02d.%06ld",
@@ -96,6 +96,7 @@ Log::write (int level, const char *format, ...)
         buff_.HasWritten (n);
         AppendLogLevelTitle_ (level);
 
+        // Warn Level + Log (format)
         va_start (vaList, format);
         int m = vsnprintf (buff_.BeginWrite (), buff_.WritableBytes (), format, vaList);
         va_end (vaList);
