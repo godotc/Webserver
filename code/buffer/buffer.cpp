@@ -89,6 +89,7 @@ Buffer::BeginWrite ()
 }
 
 
+// Reset buff memory , read&write pos
 void
 Buffer::RetrieveAll ()
 {
@@ -96,7 +97,7 @@ Buffer::RetrieveAll ()
     readPos_  = 0;
     writePos_ = 0;
 }
-
+// Maintain data to a string, then reset buf memory, return string
 std::string
 Buffer::RetrieveAllToStr ()
 {

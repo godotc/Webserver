@@ -19,7 +19,8 @@ main ()
                       12, 6,
                       true, 1, 1024);
 
-    server.init ();
+
+    // server.init ();
 
     return 0;
 }

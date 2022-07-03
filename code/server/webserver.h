@@ -2,6 +2,7 @@
 #define WEBSERVER_H
 
 #include "../http/httpconn.h"
+#include "../pool/sqlconnpool.h"
 #include "../pool/threadpool.h"
 #include "../timer/timer.h"
 #include "epoller.h"
@@ -22,7 +23,10 @@ class WebServer
 
   private:
     bool InitSocket_ ();
-    void InitEventMode_ ();
+    void InitEventMode_ (int trigMode);
+
+
+    static int SetFdNonBlock (int fd);
 
   private:
     int   port_;

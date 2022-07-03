@@ -1,7 +1,14 @@
 #include "httpconn.h"
 #include <arpa/inet.h>
+#include <atomic>
 #include <sys/fcntl.h>
 #include <unistd.h>
+
+
+const char      *HttpConn::srcDir;
+std::atomic<int> HttpConn::userCount;
+bool             HttpConn::isET;
+
 
 HttpConn::HttpConn ()
 {

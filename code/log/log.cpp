@@ -1,8 +1,13 @@
 #include "log.h"
+#include "blockqueue.h"
 
+#include <algorithm>
 #include <bits/types/struct_timeval.h>
+#include <bits/types/time_t.h>
 #include <bits/types/timer_t.h>
+#include <memory>
 #include <string>
+#include <sys/stat.h>
 #include <sys/time.h>
 
 #include <cassert>
@@ -10,6 +15,7 @@
 #include <cstdio>
 #include <ctime>
 #include <mutex>
+#include <thread>
 
 Log::Log ()
 {
@@ -132,6 +138,62 @@ Log::AppendLogLevelTitle_ (int level)
     }
 }
 
+void
+Log::init (int level = 1, const char *path, const char *suffix, int maxQueueSize)
+{
+    isOpen_ = true;
+    level_  = level;
+    if (maxQueueSize > 0)
+    {
+        isAsync_ = true;
+        if (!deque_)
+        {
+            std::unique_ptr<BlockDeque<std::string>> newDeque (new BlockDeque<std::string>);
+            deque_ = std::move (newDeque);
+
+            // Creat a thread to asynchronously write log to stdout
+            std::unique_ptr<std::thread> NewThread (new std::thread (FlushLogThread));
+            writeThread_ = std::move (NewThread);
+        }
+    }
+    else
+    {
+        isAsync_ = false;
+    }
+
+    lineCount_ = 0;
+
+    time_t     timer            = time (nullptr);
+    struct tm *sysTime          = localtime (&timer);
+    struct tm  t                = *sysTime;
+    path_                       = path;
+    suffix_                     = suffix;
+    char fileName[LOG_NAME_LEN] = { 0 };
+    snprintf (fileName, LOG_NAME_LEN - 1,
+              "%s/%04d_%02d_%02d%s",
+              path, t.tm_year + 1900, t.tm_mon + 1, t.tm_mday, suffix_);
+    toDay_ = t.tm_mday;
+
+    {
+        std::lock_guard<std::mutex> locker (mtx_);
+        buff_.RetrieveAll ();
+        if (fp_)
+        {
+            flush ();
+            fclose (fp_);
+        }
+
+        fp_ = fopen (fileName, "a");
+        if (fp_ == nullptr)
+        {
+            mkdir (path_, 0777);
+            fp_ = fopen (fileName, "a");
+        }
+        assert (fp_ != nullptr);
+    }
+}
+
+
 int
 Log::GetLevel ()
 {
@@ -164,4 +226,22 @@ bool
 Log::IsOpen ()
 {
     return isOpen_;
+}
+
+void
+Log::AsyncWrite_ ()
+{
+    std::string str = "";
+    while (deque_->pop (str))
+    {
+        std::lock_guard<std::mutex> locker (mtx_);
+        fputs (str.c_str (), fp_);
+    }
+}
+
+
+void
+Log::FlushLogThread ()
+{
+    Log::Instance ()->AsyncWrite_ ();
 }
