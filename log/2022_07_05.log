@@ -1,0 +1,6 @@
+2022-07-05 21:04:23.413196 [info] : ===============Server init==================
+2022-07-05 21:04:23.413244 [info] : Port:9527, OpenLinger: false
+2022-07-05 21:04:23.413256 [info] : Listen Mode:ET, OpenLinger:ET
+2022-07-05 21:04:23.413260 [info] : LogSys level: 1
+2022-07-05 21:04:23.413264 [info] : srcDir: /home/godot/Code/Webserver_on_Linux/resoures/
+2022-07-05 21:04:23.413268 [info] : SqlConnPool num:12,ThreadPool num:6
