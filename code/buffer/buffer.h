@@ -4,6 +4,7 @@
 #include <atomic>
 #include <cstddef>
 #include <string>
+#include <sys/types.h>
 #include <vector>
 
 class Buffer
@@ -21,8 +22,8 @@ class Buffer
     void        EnsureWriteable (size_t len);
     void        HasWritten (size_t len);
 
-    // void Retrieve (size_t len);
-    // void RetrieveUntil (const char *end);
+    void Retrieve (size_t len);
+    void RetrieveUntil (const char *end);
 
     void        RetrieveAll ();
     std::string RetrieveAllToStr ();
@@ -34,6 +35,9 @@ class Buffer
     void Append (const char *str, size_t len);
     void Append (const void *data, size_t len);
     void Append (const Buffer &buf);
+
+    ssize_t ReadFd (int fd, int *Errno);
+
 
   private:
     char       *BeginPtr_ ();

@@ -1,0 +1,145 @@
+2022-07-07 01:36:04.901272 [info] : ===============Server init==================
+2022-07-07 01:36:04.901290 [info] : Port:9527, OpenLinger: false
+2022-07-07 01:36:04.901298 [info] : Listen Mode:ET, OpenLinger:ET
+2022-07-07 01:36:04.901524 [info] : LogSys level: 1
+2022-07-07 01:36:04.901543 [info] : srcDir: /home/godot/Code/Webserver_on_Linux/resoures/
+2022-07-07 01:36:04.901548 [info] : SqlConnPool num:12,ThreadPool num:6
+2022-07-07 01:36:04.901552 [info] : ============== Server Start =====================
+2022-07-07 01:46:15.021852 [info] : ===============Server init==================
+2022-07-07 01:46:15.021869 [info] : Port:9527, OpenLinger: false
+2022-07-07 01:46:15.022113 [info] : Listen Mode:ET, OpenLinger:ET
+2022-07-07 01:46:15.022132 [info] : LogSys level: 1
+2022-07-07 01:46:15.022137 [info] : srcDir: /home/godot/Code/Webserver_on_Linux/resources/
+2022-07-07 01:46:15.022142 [info] : SqlConnPool num:12,ThreadPool num:6
+2022-07-07 01:46:15.022146 [info] : ============== Server Start =====================
+2022-07-07 01:49:26.058725 [info] : ===============Server init==================
+2022-07-07 01:49:26.058744 [info] : Port:9527, OpenLinger: false
+2022-07-07 01:49:26.058753 [info] : Listen Mode:ET, OpenLinger:ET
+2022-07-07 01:49:26.058760 [info] : LogSys level: 1
+2022-07-07 01:49:26.058766 [info] : srcDir: /home/godot/Code/Webserver_on_Linux/resources/
+2022-07-07 01:49:26.058773 [info] : SqlConnPool num:12,ThreadPool num:6
+2022-07-07 01:49:26.058781 [info] : ============== Server Start =====================
+2022-07-07 01:51:57.477872 [info] : ===============Server init==================
+2022-07-07 01:51:57.477919 [info] : Port:9527, OpenLinger: false
+2022-07-07 01:51:57.477930 [info] : Listen Mode:ET, OpenLinger:ET
+2022-07-07 01:51:57.477934 [info] : LogSys level: 1
+2022-07-07 01:51:57.477938 [info] : srcDir: /home/godot/Code/Webserver_on_Linux/resources/
+2022-07-07 01:51:57.477942 [info] : SqlConnPool num:12,ThreadPool num:6
+2022-07-07 01:51:57.477946 [info] : ============== Server Start =====================
+2022-07-07 01:52:50.881281 [info] : ===============Server init==================
+2022-07-07 01:52:50.881335 [info] : Port:9527, OpenLinger: false
+2022-07-07 01:52:50.881346 [info] : Listen Mode:ET, OpenLinger:ET
+2022-07-07 01:52:50.881351 [info] : LogSys level: 1
+2022-07-07 01:52:50.881354 [info] : srcDir: /home/godot/Code/Webserver_on_Linux/resources/
+2022-07-07 01:52:50.881359 [info] : SqlConnPool num:12,ThreadPool num:6
+2022-07-07 01:52:50.881363 [info] : ============== Server Start =====================
+2022-07-07 01:52:57.983923 [info] : Client[18](127.0.0.1:54465) in, userCount:1
+2022-07-07 01:52:57.984066 [info] : Client[18] in!
+2022-07-07 01:59:53.203511 [info] : ===============Server init==================
+2022-07-07 01:59:53.203578 [info] : Port:9527, OpenLinger: false
+2022-07-07 01:59:53.203591 [info] : Listen Mode:ET, OpenLinger:ET
+2022-07-07 01:59:53.203600 [info] : LogSys level: 1
+2022-07-07 01:59:53.203608 [info] : srcDir: /home/godot/Code/Webserver_on_Linux/resources/
+2022-07-07 01:59:53.203616 [info] : SqlConnPool num:12,ThreadPool num:6
+2022-07-07 01:59:53.203622 [info] : ============== Server Start =====================
+2022-07-07 01:59:55.443655 [info] : Client[18](127.0.0.1:56513) in, userCount:1
+1
+2022-07-07 02:02:21.421426 [info] : ===============Server init==================
+2022-07-07 02:02:21.421471 [info] : Port:9527, OpenLinger: false
+2022-07-07 02:02:21.421482 [info] : Listen Mode:ET, OpenLinger:ET
+2022-07-07 02:02:21.421486 [info] : LogSys level: 1
+2022-07-07 02:02:21.421490 [info] : srcDir: /home/godot/Code/Webserver_on_Linux/resources/
+2022-07-07 02:02:21.421494 [info] : SqlConnPool num:12,ThreadPool num:6
+2022-07-07 02:02:21.421498 [info] : ============== Server Start =====================
+2022-07-07 02:02:25.358426 [info] : Client[18](127.0.0.1:57537) in, userCount:1
+2022-07-07 02:04:30.588674 [info] : ===============Server init==================
+2022-07-07 02:04:30.588687 [info] : Port:9527, OpenLinger: false
+2022-07-07 02:04:30.588691 [info] : Listen Mode:ET, OpenLinger:ET
+2022-07-07 02:04:30.588695 [info] : LogSys level: 1
+2022-07-07 02:04:30.588699 [info] : srcDir: /home/godot/Code/Webserver_on_Linux/resources/
+2022-07-07 02:04:30.588703 [info] : SqlConnPool num:12,ThreadPool num:6
+2022-07-07 02:04:30.588706 [info] : ============== Server Start =====================
+2022-07-07 02:04:34.145812 [info] : Client[18](127.0.0.1:59073) in, userCount:1
+2022-07-07 02:04:34.145972 [info] : Client[18] in!
+2022-07-07 02:04:34.349187 [info] : Client[21](127.0.0.1:59585) in, userCount:2
+2022-07-07 02:04:34.349427 [info] : Client[21] in!
+2022-07-07 02:04:34.351925 [info] : Client[22](127.0.0.1:60097) in, userCount:3
+2022-07-07 02:04:34.352052 [info] : Client[22] in!
+2022-07-07 02:04:34.352091 [info] : Client[23](127.0.0.1:60609) in, userCount:4
+2022-07-07 02:04:34.352176 [info] : Client[23] in!
+2022-07-07 02:04:34.352207 [info] : Client[25](127.0.0.1:61121) in, userCount:5
+2022-07-07 02:04:34.352222 [info] : Client[25] in!
+2022-07-07 02:04:34.352235 [info] : Client[26](127.0.0.1:61633) in, userCount:6
+2022-07-07 02:04:34.352253 [info] : Client[26] in!
+2022-07-07 02:05:25.544798 [info] : Verify name:abc pwd:rname=abc&password=123
+2022-07-07 02:05:25.555698 [error]: RequestLine Error
+2022-07-07 02:05:25.556181 [info] : Client[18] quit!
+2022-07-07 02:05:25.556369 [info] : CLient[18](127.0.0.1:59073] quit, UserCount:5
+2022-07-07 02:09:46.053738 [info] : ===============Server init==================
+2022-07-07 02:09:46.053802 [info] : Port:9527, OpenLinger: false
+2022-07-07 02:09:46.053819 [info] : Listen Mode:ET, OpenLinger:ET
+2022-07-07 02:09:46.053826 [info] : LogSys level: 1
+2022-07-07 02:09:46.053833 [info] : srcDir: /home/godot/Code/Webserver_on_Linux/resources/
+2022-07-07 02:09:46.053839 [info] : SqlConnPool num:12,ThreadPool num:6
+2022-07-07 02:09:46.053846 [info] : ============== Server Start =====================
+2022-07-07 02:09:52.823223 [info] : Client[18](127.0.0.1:63169) in, userCount:1
+5
+2022-07-07 02:11:40.066327 [info] : ===============Server init==================
+2022-07-07 02:11:40.066385 [info] : Port:9527, OpenLinger: false
+2022-07-07 02:11:40.066401 [info] : Listen Mode:ET, OpenLinger:ET
+2022-07-07 02:11:40.066409 [info] : LogSys level: 1
+2022-07-07 02:11:40.066417 [info] : srcDir: /home/godot/Code/Webserver_on_Linux/resources/
+2022-07-07 02:11:40.066424 [info] : SqlConnPool num:12,ThreadPool num:6
+2022-07-07 02:11:40.066432 [info] : ============== Server Start =====================
+2022-07-07 02:11:49.373228 [info] : Client[18](127.0.0.1:64193) in, userCount:1
+2022-07-07 02:11:49.373371 [info] : Client[18] in!
+2022-07-07 02:11:49.501626 [info] : Client[21](127.0.0.1:64705) in, userCount:2
+2022-07-07 02:11:49.501764 [info] : Client[21] in!
+2022-07-07 02:11:49.502191 [info] : Client[22](127.0.0.1:65217) in, userCount:3
+2022-07-07 02:11:49.502225 [info] : Client[22] in!
+2022-07-07 02:11:49.513473 [info] : Client[23](127.0.0.1:194) in, userCount:4
+2022-07-07 02:11:49.515138 [info] : Client[23] in!
+2022-07-07 02:11:49.515482 [info] : Client[25](127.0.0.1:706) in, userCount:5
+2022-07-07 02:11:49.515513 [info] : Client[25] in!
+2022-07-07 02:11:49.515532 [info] : Client[26](127.0.0.1:1218) in, userCount:6
+2022-07-07 02:11:49.515544 [info] : Client[26] in!
+2022-07-07 02:12:08.612886 [info] : Verify name:abc pwd:rname=abc&password=123
+2022-07-07 02:12:08.616416 [error]: RequestLine Error
+2022-07-07 02:12:08.617584 [info] : Client[26] quit!
+2022-07-07 02:12:08.618007 [info] : CLient[26](127.0.0.1:1218] quit, UserCount:5
+2022-07-07 02:12:08.803925 [info] : Client[26](127.0.0.1:1730) in, userCount:6
+2022-07-07 02:12:08.804055 [info] : Client[26] in!
+2022-07-07 02:12:45.870959 [info] : Verify name:abc pwd:rname=abc&password=123
+2022-07-07 02:12:45.873386 [error]: RequestLine Error
+2022-07-07 02:12:45.873540 [info] : Client[18] quit!
+2022-07-07 02:12:45.873587 [info] : CLient[18](127.0.0.1:64193] quit, UserCount:5
+2022-07-07 02:12:45.997874 [info] : Client[18](127.0.0.1:2242) in, userCount:6
+2022-07-07 02:12:45.998032 [info] : Client[18] in!
+2022-07-07 02:13:44.128250 [info] : Verify name:gloria pwd:me=gloria&password=gloria
+2022-07-07 02:13:44.129939 [error]: RequestLine Error
+2022-07-07 02:13:44.130507 [info] : Client[18] quit!
+2022-07-07 02:13:44.132356 [info] : CLient[18](127.0.0.1:2242] quit, UserCount:5
+2022-07-07 02:13:44.279012 [info] : Client[18](127.0.0.1:2754) in, userCount:6
+2022-07-07 02:13:44.279145 [info] : Client[18] in!
+2022-07-07 02:14:44.319178 [info] : Client[22] quit!
+2022-07-07 02:14:44.319328 [info] : CLient[22](127.0.0.1:65217] quit, UserCount:5
+2022-07-07 02:14:44.319343 [info] : Client[25] quit!
+2022-07-07 02:14:44.319495 [info] : CLient[25](127.0.0.1:706] quit, UserCount:4
+2022-07-07 02:14:44.319582 [info] : Client[26] quit!
+2022-07-07 02:14:44.319633 [info] : CLient[26](127.0.0.1:1730] quit, UserCount:3
+2022-07-07 02:14:44.319643 [info] : Client[18] quit!
+2022-07-07 02:14:44.319694 [info] : CLient[18](127.0.0.1:2754] quit, UserCount:2
+2022-07-07 02:14:44.319714 [info] : Client[21] quit!
+2022-07-07 02:14:44.319755 [info] : CLient[21](127.0.0.1:64705] quit, UserCount:1
+2022-07-07 02:14:44.319764 [info] : Client[23] quit!
+2022-07-07 02:14:44.319945 [info] : CLient[23](127.0.0.1:194] quit, UserCount:0
+2022-07-07 02:15:16.543621 [info] : Client[18](127.0.0.1:3266) in, userCount:1
+2022-07-07 02:15:16.543754 [info] : Client[18] in!
+2022-07-07 02:15:16.887930 [info] : Client[21](127.0.0.1:3778) in, userCount:2
+2022-07-07 02:15:16.888039 [info] : Client[21] in!
+2022-07-07 02:15:16.888647 [info] : Client[22](127.0.0.1:4290) in, userCount:3
+2022-07-07 02:15:16.888679 [info] : Client[22] in!
+2022-07-07 02:15:16.893419 [info] : Client[23](127.0.0.1:4802) in, userCount:4
+2022-07-07 02:15:16.893568 [info] : Client[23] in!
+2022-07-07 02:15:16.895437 [info] : Client[25](127.0.0.1:5314) in, userCount:5
+2022-07-07 02:15:16.895510 [info] : Client[25] in!

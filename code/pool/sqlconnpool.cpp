@@ -36,6 +36,15 @@ SqlConnPool::ClosePool ()
 }
 
 
+void
+SqlConnPool::FreeConn (MYSQL *sql)
+{
+    assert (sql);
+    std::lock_guard<std::mutex> locker (mtx_);
+    connQue_.push (sql);
+    sem_post (&semId_);
+}
+
 MYSQL *
 SqlConnPool::GetConn ()
 {

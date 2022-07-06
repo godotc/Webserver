@@ -7,6 +7,7 @@
 #include "../timer/timer.h"
 #include "epoller.h"
 #include <memory>
+#include <netinet/in.h>
 #include <unistd.h>
 #include <unordered_map>
 
@@ -24,11 +25,25 @@ class WebServer
   private:
     bool InitSocket_ ();
     void InitEventMode_ (int trigMode);
+    void AddClient_ (int fd, sockaddr_in addr);
 
+    void DealListen_ ();
+    void DealWrite_ (HttpConn *client);
+    void DealRead_ (HttpConn *client);
+
+    void ExtentTime_ (HttpConn *client);
+    void SendError_ (int fd, const char *info);
+    void CloseConn_ (HttpConn *client);
+
+    void OnRead_ (HttpConn *client);
+    void OnWrite_ (HttpConn *client);
+    void OnProcess (HttpConn *client);
 
     static int SetFdNonBlock (int fd);
 
   private:
+    static const int MAX_FD = 65536;
+
     int   port_;
     bool  openLinger_;
     int   timeoutMS_;

@@ -20,7 +20,7 @@ main ()
                       true, 1, 1024);
 
 
-    // server.init ();
+    server.Start ();
 
     return 0;
 }

@@ -16,6 +16,7 @@ class SqlConnPool
     static SqlConnPool *Instance ();
 
     MYSQL *GetConn ();
+    void   FreeConn (MYSQL *conn);
 
     void Init (const char *host, int port,
                const char *user, const char *passwd,

@@ -9,10 +9,9 @@
 
 
 Epoller::Epoller (int maxEvent)
-    : events_ (maxEvent),
-      epollFd_ (epoll_create (512))
+    : epollFd_ (epoll_create (512)),
+      events_ (maxEvent)
 {
-    // events_ = std::move (std::vector<struct epoll_event> (maxEvent));
     assert (epollFd_ >= 0);
     assert (events_.size () > 0);
 }
@@ -69,6 +68,6 @@ Epoller::GetEventFd (size_t i) const
 uint32_t
 Epoller::GetEvents (size_t i) const
 {
-    assert (i < events_.size () && i > 0);
+    assert (i < events_.size () && i >= 0);
     return events_[i].events;
 }
