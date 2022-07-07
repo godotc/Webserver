@@ -1,18 +1,13 @@
+
 #include "sqlconnpool.h"
 #include "../log/log.h"
-#include <cassert>
-#include <mutex>
-#include <mysql/mysql.h>
-#include <semaphore.h>
+using namespace std;
 
-SqlConnPool ::SqlConnPool ()
+
+SqlConnPool::SqlConnPool ()
 {
     userCount_ = 0;
     freeCount_ = 0;
-}
-SqlConnPool::~SqlConnPool ()
-{
-    ClosePool ();
 }
 
 SqlConnPool *
@@ -23,42 +18,41 @@ SqlConnPool::Instance ()
 }
 
 void
-SqlConnPool::ClosePool ()
+SqlConnPool::Init (const char *host, int port,
+                   const char *user, const char *pwd, const char *dbName,
+                   int connSize = 10)
 {
-    std::lock_guard<std::mutex> locker (mtx_);
-    while (!connQue_.empty ())
-    {
-        auto item = connQue_.front ();
-        connQue_.pop ();
-        mysql_close (item);
+    assert (connSize > 0);
+    for (int i = 0; i < connSize; i++) {
+        MYSQL *sql = nullptr;
+        sql        = mysql_init (sql);
+        if (!sql) {
+            LOG_ERROR ("MySql init error!");
+            assert (sql);
+        }
+        sql = mysql_real_connect (sql, host,
+                                  user, pwd,
+                                  dbName, port, nullptr, 0);
+        if (!sql) {
+            LOG_ERROR ("MySql Connect error!");
+        }
+        connQue_.push (sql);
     }
-    mysql_library_end ();
-}
-
-
-void
-SqlConnPool::FreeConn (MYSQL *sql)
-{
-    assert (sql);
-    std::lock_guard<std::mutex> locker (mtx_);
-    connQue_.push (sql);
-    sem_post (&semId_);
+    MAX_CONN_ = connSize;
+    sem_init (&semId_, 0, MAX_CONN_);
 }
 
 MYSQL *
 SqlConnPool::GetConn ()
 {
     MYSQL *sql = nullptr;
-    if (connQue_.empty ())
-    {
-        LOG_WARN ("SqlConnPool busy!!");
+    if (connQue_.empty ()) {
+        LOG_WARN ("SqlConnPool busy!");
         return nullptr;
     }
-
     sem_wait (&semId_);
-
     {
-        std::lock_guard<std::mutex> locker (mtx_);
+        lock_guard<mutex> locker (mtx_);
         sql = connQue_.front ();
         connQue_.pop ();
     }
@@ -66,33 +60,34 @@ SqlConnPool::GetConn ()
 }
 
 void
-SqlConnPool::Init (const char *host, int port,
-                   const char *user, const char *passwd,
-                   const char *dbName, int connsize = 10)
+SqlConnPool::FreeConn (MYSQL *sql)
 {
-    assert (connsize > 0);
+    assert (sql);
+    lock_guard<mutex> locker (mtx_);
+    connQue_.push (sql);
+    sem_post (&semId_);
+}
 
-    for (int i = 0; i < connsize; ++i)
-    {
-        MYSQL *sql = nullptr;
-        sql        = mysql_init (sql);
-        if (!sql)
-        {
-            LOG_ERROR ("MySql init error!");
-            assert (sql);
-        }
-
-        sql = mysql_real_connect (sql,
-                                  host, user, passwd,
-                                  dbName,
-                                  port, nullptr, 0);
-        if (!sql)
-        {
-            LOG_ERROR ("MySql Connect error!");
-        }
-        connQue_.push (sql);
+void
+SqlConnPool::ClosePool ()
+{
+    lock_guard<mutex> locker (mtx_);
+    while (!connQue_.empty ()) {
+        auto item = connQue_.front ();
+        connQue_.pop ();
+        mysql_close (item);
     }
+    mysql_library_end ();
+}
 
-    MAX_CONN_ = connsize;
-    sem_init (&semId_, 0, MAX_CONN_);
+// int
+// SqlConnPool::GetFreeConnCount ()
+// {
+//     lock_guard<mutex> locker (mtx_);
+//     return connQue_.size ();
+// }
+
+SqlConnPool::~SqlConnPool ()
+{
+    ClosePool ();
 }
